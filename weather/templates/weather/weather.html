@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Weather App</title>
+    <link rel="stylesheet" href="{% static 'weather/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather in {{ city }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="city" placeholder="Enter city">
+            <button type="submit">Get Weather</button>
+        </form>
+        <div class="weather">
+            <h2>{{ temperature }}°C</h2>
+            <p>{{ description }}</p>
+            <img src="http://openweathermap.org/img/wn/{{ icon }}@2x.png" alt="Weather icon">
+        </div>
+    </div>
+</body>
+</html>
